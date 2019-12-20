@@ -12,7 +12,7 @@ function login(username, password) {
         body: JSON.stringify({ username, password })
     };
     
-    return fetch(`${config.apiUrlLocal}/manager/login`, requestOptions)
+    return fetch(`${config.apiUrlHeroku}/manager/login`, requestOptions)
         .then(handleResponse)
         .then((res) => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
@@ -34,7 +34,7 @@ function getInfo() {
         headers: authHeader()
     };
 
-    return fetch(`${config.apiUrlLocal}/manager/me`, requestOptions).then(handleResponse);
+    return fetch(`${config.apiUrlHeroku}/manager/me`, requestOptions).then(handleResponse);
 }
 
 function register(user) {
@@ -43,7 +43,7 @@ function register(user) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(user)
     };
-    return fetch(`${config.apiUrlLocal}/manager/register`, requestOptions).then(handleResponse);
+    return fetch(`${config.apiUrlHeroku}/manager/register`, requestOptions).then(handleResponse);
 }
 
 function updateInfo(fullName, urlAvatar) {
@@ -53,7 +53,7 @@ function updateInfo(fullName, urlAvatar) {
         headers: { ...authHeader(), 'Content-Type': 'application/json' },
         body: JSON.stringify({fullName, urlAvatar})
     };
-    return fetch(`${config.apiUrlLocal}/manager/update`, requestOptions).then(handleResponse);
+    return fetch(`${config.apiUrlHeroku}/manager/update`, requestOptions).then(handleResponse);
 }
 
 function changePassword(newPassword, oldPassword) {
@@ -63,7 +63,7 @@ function changePassword(newPassword, oldPassword) {
         body: JSON.stringify({newPassword, oldPassword})
     };
 
-    return fetch(`${config.apiUrlLocal}/manager/changePassword`, requestOptions).then(handleResponse);
+    return fetch(`${config.apiUrlHeroku}/manager/changePassword`, requestOptions).then(handleResponse);
 }
 
 // prefixed function name with underscore because delete is a reserved word in javascript
