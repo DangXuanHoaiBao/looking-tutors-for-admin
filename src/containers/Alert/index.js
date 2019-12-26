@@ -17,6 +17,7 @@ class AlertPage extends React.Component {
      
     notify = () => {
         const { alert } = this.props;
+        console.log(alert.message);
         this.toastId = toast(alert.message, {
         transition: Bounce,
         closeButton: true,

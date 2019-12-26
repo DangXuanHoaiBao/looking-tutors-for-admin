@@ -40,7 +40,16 @@ import  userConstants  from '../constants/user-constant';
         error: action.payload
       }
     }
-
+    case userConstants.GET_LIST_ACCOUNT_USER_SUCCESS: {
+      return{
+        listAccountUser: action.payload
+      }
+    }
+    case userConstants.GET_LIST_ACCOUNT_USER_FAILURE: {
+      return{
+        error: action.payload
+      }
+    }
     default:
       return state
   }

@@ -5,11 +5,15 @@
 import React, {Fragment} from 'react';
 import {connect} from 'react-redux';
 
+import {Media} from 'reactstrap';
+
 import Hamburger from 'react-hamburgers';
 
 import AppMobileMenu from '../AppMobileMenu';
 
 import themeAction from '../../actions/theme-action';
+
+import logo from '../../asset/images/logo.png';
 
 class HeaderLogo extends React.Component {
     constructor(props) {
@@ -17,7 +21,8 @@ class HeaderLogo extends React.Component {
         this.state = {
             active: false,
             mobile: false,
-            activeSecondaryMenuMobile: false
+            activeSecondaryMenuMobile: false,
+            showLogo: false
         };
 
     }
@@ -30,19 +35,19 @@ class HeaderLogo extends React.Component {
   
 
     render() {
-        const {enableClosedSidebar,} = this.props;
+        const {enableClosedSidebar} = this.props;
 
-        const {active} = this.state;
+        const {active, showLogo} = this.state;
         return (
             <Fragment>
-                <div className="app-header__logo">
-                    <div className="logo-src"/>
+                <div className="app-header__logo custom-app-header-logo">
+                <Media object width={120} height={120} className="rounded-circle" src={logo} alt="" hidden={showLogo}/>
                     <div className="header__pane ml-auto">
                         <div onClick={this.toggleEnableClosedSidebar}>
                             <Hamburger
                                 active={enableClosedSidebar}
                                 type="elastic"
-                                onClick={() => this.setState({active: !active})}
+                                onClick={() => this.setState({active: !active, showLogo: !showLogo})}
                             />
                         </div>
                     </div>

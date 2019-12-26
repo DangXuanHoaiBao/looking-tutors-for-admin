@@ -17,13 +17,13 @@ class Header extends React.Component {
         const {
             headerBackgroundColor,
             enableMobileMenuSmall,
-            enableHeaderShadow
+            enableHeaderShadow,
         } = this.props;
         return (
             <Fragment>
                 <ReactCSSTransitionGroup
                     component="div"
-                    className={cx("app-header", headerBackgroundColor, {'header-shadow': enableHeaderShadow})}
+                    className={cx("app-header ", headerBackgroundColor, {'header-shadow': enableHeaderShadow})}
                     transitionName="HeaderAnimation"
                     transitionAppear
                     transitionAppearTimeout={1500}
@@ -33,7 +33,7 @@ class Header extends React.Component {
                     <HeaderLogo/>
 
                     <div className={cx(
-                        "app-header__content",
+                        "app-header__content custom-app-header-content",
                         {'header-mobile-open': enableMobileMenuSmall},
                     )}>
                         <div className="app-header-left">

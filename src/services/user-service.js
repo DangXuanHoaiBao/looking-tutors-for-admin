@@ -86,12 +86,21 @@ function handleResponse(response) {
         return data;
     });
 }
+function getListAccountUser() {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+
+    return fetch(`${config.apiUrlHeroku}/user/list-account-user`, requestOptions).then(handleResponse);
+}
 const userService = {
     login,
     logout,
     register,
     getInfo,
     updateInfo,
-    changePassword
+    changePassword,
+    getListAccountUser
 };
 export default userService;

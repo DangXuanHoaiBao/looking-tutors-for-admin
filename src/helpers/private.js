@@ -26,11 +26,29 @@ const IsLogin = ({ component: Component, ...rest }) => (
     )} />
 )
 
+const IsAdmin = ({ component: Component, ...rest }) => {
+    const res = JSON.parse(localStorage.getItem('res'));
+    if(!res){
+        return (
+            <Route {...rest} render={props => (
+                <Redirect to={{ pathname: '/login', state: { from: props.location } }} />
+            )} />
+        );
+    }
+    return(
+        <Route {...rest} render={props => (
+            res.manager.role === "Chủ sở hữu"
+                ? <Component {...props} />
+                : <Redirect to={{ pathname: '/dashboard', state: { from: props.location } }} />
+        )} />
+    )
+}
 
 
 const Private = {
     PrivateStartPage,
     PrivateAllPage,
     IsLogin,
+    IsAdmin
 };
 export default Private;

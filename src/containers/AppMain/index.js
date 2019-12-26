@@ -20,6 +20,7 @@ import Dashboards from '../Dashboards';
 import FormInfo from '../Forms/Info';
 import FormChangePassWord from '../Forms/ChangePassword';
 import FormCreateAccount from '../Forms/CreateAccount';
+import ListAccountUser from '../ListAccountUser';
 
 class Main extends React.Component {
     constructor(props) {
@@ -71,6 +72,7 @@ class Main extends React.Component {
                                                                 <Private.PrivateAllPage exact path="/info" component={FormInfo}></Private.PrivateAllPage>
                                                                 <Private.PrivateAllPage exact path="/change-password" component={FormChangePassWord}></Private.PrivateAllPage>
                                                                 <Private.PrivateAllPage exact path="/create-account" component={FormCreateAccount}></Private.PrivateAllPage>
+                                                                <Private.IsAdmin exact path="/list-account-user" component={ListAccountUser}></Private.IsAdmin>
                                                             </div>
                                                             <AppFooter/>
                                                         </div>

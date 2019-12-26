@@ -138,12 +138,30 @@ function changePassword(oldPassword, newPassword, confirmPassword) {
     function failure(error) { return { type: userConstants.CHANGE_PASSWORD_INFO_FAILURE, payload: error } }
 }
 
+function getListAccountUser() {
+    return dispatch => {
+
+        userService.getListAccountUser()
+            .then(
+                list => {
+                    dispatch(success(list));
+                },
+                error => dispatch(failure(error.toString()))
+            );
+    };
+
+    function success(list) { return { type: userConstants.GET_LIST_ACCOUNT_USER_SUCCESS, payload: list } }
+    function failure(error) { return { type: userConstants.GET_LIST_ACCOUNT_USER_FAILURE, payload: error } }
+}
+
+
 const userActions = {
     login,
     logout,
     register,
     getInfo,
     updateInfo,
-    changePassword
+    changePassword,
+    getListAccountUser
 };
 export default userActions;
